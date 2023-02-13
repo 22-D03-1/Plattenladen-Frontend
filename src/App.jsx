@@ -9,6 +9,7 @@ import Login from './views/Login';
 import Checkout from './views/Checkout';
 import Account from './views/Account';
 import Error404 from './views/Error404';
+import Components from "./views/Components";
 
 function App() {
   const [records, setRecords] = useState([])
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/checkout" element={<Checkout />}/>
           <Route path="/account" element={<Account />}/>
+          <Route path="/components" element={<Components />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
