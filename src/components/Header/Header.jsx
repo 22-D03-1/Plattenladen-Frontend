@@ -2,7 +2,7 @@ import { BiUser } from "react-icons/bi"
 import { GrCart } from "react-icons/gr"
 
 import { Link } from "react-router-dom"
-import SearchField from "./SearchField"
+import SearchField from "./Searchfield"
 
 import "./Header.scss"
 
