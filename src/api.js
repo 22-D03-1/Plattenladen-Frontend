@@ -1,7 +1,12 @@
-const baseUrl = "http://localhost:4001/api";
+const baseUrl = "/api";
 
 export const getProducts = async () => {
     try {
+        const response = await fetch(`${baseUrl}/products`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
         return [
             {
                 id: "esfse234056520w3wsdmdobht",
@@ -20,10 +25,5 @@ export const getProducts = async () => {
                 price: 17.99,
             }
         ];
-        const response = await fetch(`${baseUrl}/products`);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error);
     }
 }
