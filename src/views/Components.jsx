@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { addProduct, updateProduct } from "../api";
 import Button from "../components/atoms/Button";
 import Input from "../components/atoms/Input"
 import Form from "../components/molecules/Form";
 import InputIcon from "../components/molecules/InputIcon";
+import ProductForm from "../components/organisms/ProductForm";
 
 export default function ({ records }) {
     const [password, setPassword] = useState("");
@@ -32,6 +34,29 @@ export default function ({ records }) {
 
     return (
         <>
+            <h2>Produkt bearbeiten</h2>
+            <ProductForm
+                label="Produkt aktualisieren"
+                product={
+                    {
+                        id: "esfse234056520w3wsdmdobht",
+                        title: "Where the Light is",
+                        artist: "John Mayer",
+                        year: 2008,
+                        picture: "https://m.media-amazon.com/images/I/81lfMW3-N0L._SL1500_.jpg",
+                        price: 17.99,
+                    }
+                }
+                action={updateProduct}
+            />
+
+            <hr />
+
+            <h2>Produkt hinzufügen</h2>
+            <ProductForm action={addProduct} />
+
+            <hr />
+
             <InputIcon label="Suche 1" name="search1" value={search1} onChange={handleSearch1} onClick={handleClickSearch1} />
             <InputIcon label="Suche 2" name="search2" value={search2} onChange={handleSearch2} onClick={handleClickSearch2} />
             <InputIcon label="Suche 3" name="search3" value={search3} onChange={handleSearch3} onClick={handleClickSearch3} />
@@ -45,6 +70,7 @@ export default function ({ records }) {
                 <Input label="E-Mail-Adresse" name="email" /><br />
                 <Input label="Passwort" name="password" type="password" value={password} onChange={handlePassword} /><br />
             </Form>
+
         </>
     )
 }

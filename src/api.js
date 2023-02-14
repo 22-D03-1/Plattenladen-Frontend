@@ -27,3 +27,39 @@ export const getProducts = async () => {
         ];
     }
 }
+
+
+export const addProduct = async (product) => {
+    try {
+        const response = await fetch(`${baseUrl}/products`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(product),
+        });
+        if (response.status !== 201) throw new Error(response);
+        return true;
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
+
+export const updateProduct = async (product) => {
+    try {
+        const response = await fetch(`${baseUrl}/products/${product.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(product),
+        });
+        if (response.status !== 204) throw new Error(response);
+        return true;
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
