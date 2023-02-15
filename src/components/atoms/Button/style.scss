@@ -6,4 +6,9 @@
     padding: 1em;
     border-radius: 50px;
     border: none;
+    cursor: pointer;
+
+    &:active {
+        background-color: #555555;
+    }
 }

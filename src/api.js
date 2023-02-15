@@ -14,7 +14,7 @@ export const getProducts = async () => {
                 artist: "John Mayer",
                 year: 2008,
                 picture: "https://m.media-amazon.com/images/I/81lfMW3-N0L._SL1500_.jpg",
-                price: 17.99,
+                price: 22.95,
             },
             {
                 id: "esfse234056520w3wsdmdobhf",

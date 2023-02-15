@@ -1,7 +1,13 @@
+import { useCart } from "../../context/CartProvider"
 import { FiHeart } from "react-icons/fi"
+import Button from "../atoms/Button"
+
 import "./Product.scss"
 
 export default function({record}) {
+
+    const { addToCart } = useCart()
+
     return (
         <div className="product">
             <div className="product-img-container">
@@ -15,7 +21,7 @@ export default function({record}) {
                 <span className="price">{record.price} €</span>
             </div>
             <div>
-                <button className="add-to-cart">Zum Warenkorb hinzufügen</button>
+                <Button onClick={() => addToCart(record.id)} label={"Zum Warenkorb hinzufügen"}/>
             </div>
         </div>
     )

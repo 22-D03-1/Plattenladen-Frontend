@@ -1,15 +1,21 @@
+import { useCart } from "../context/CartProvider"
 import CartItem from "../components/CartItem/CartItem"
 
 export default function({records}) {
-    const cart = [
-        {
-            id: "esfse234056520w3wsdmdobht",
-            amount: 2,
-        }
-    ]
 
+    const {cart} = useCart()
+
+    const sumCart = cart.reduce((acc, el)=>{
+        const { price } = records.find((r)=> r.id == el.id)
+        return acc += (el.amount * price)
+    }, 0)
+
+    const shipping = 5.95
+    console.log(cart)
     return (
         <>
+        {cart.length ?
+            <> 
             <h2>Warenkorb</h2>
             {cart.map((c,i)=> (
                 <CartItem 
@@ -21,12 +27,14 @@ export default function({records}) {
             <hr/>
             <div className="cart-sum">
                 <span>Versandkosten</span>
-                <span>5,95 €</span>
+                <span>{shipping} €</span>
             </div>
             <div className="cart-sum">
                 <span>Gesamtkosten</span>
-                <span>49,85 €</span>
+                <span>{(sumCart + shipping).toFixed(2)} €</span>
             </div>
+            </>
+        : <p>Ziemlich leer hier</p>}
         </>
     )
 }

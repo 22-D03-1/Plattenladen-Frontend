@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import './App.scss'
 import { getProducts } from './api.js'
+import CartProvider from './context/CartProvider';
 import Header from './components/Header/Header';
 import Main from './views/Main';
 import Cart from './views/Cart';
@@ -23,18 +24,20 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Main records={records}/>}/>
-          <Route path="/cart" element={<Cart records={records}/>}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/checkout" element={<Checkout />}/>
-          <Route path="/account" element={<Account />}/>
-          <Route path="/components" element={<Components />} />
-          <Route path="*" element={<Error404 />} />
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main records={records}/>}/>
+            <Route path="/cart" element={<Cart records={records}/>}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/checkout" element={<Checkout />}/>
+            <Route path="/account" element={<Account />}/>
+            <Route path="/components" element={<Components />} />
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </div>
   )
 }

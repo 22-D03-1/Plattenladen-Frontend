@@ -56,5 +56,24 @@ header {
         svg {
            margin: 0 0.8em; 
         }
+
+        a {
+            position: relative;
+        }
+
+        .cart-count {
+            width: max-content;
+            min-width: 1rem;
+            padding: 0.1em;
+            aspect-ratio: 1;
+            font-size: 0.7rem;
+            text-align: center;
+            position: absolute;
+            display: inline-block;
+            right: 0.9em;
+            background-color: #DC4231 ;
+            color: white;
+            border-radius: 50%;
+        }
     }
 }

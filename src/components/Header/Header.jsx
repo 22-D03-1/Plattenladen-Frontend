@@ -1,3 +1,4 @@
+import { useCart } from "../../context/CartProvider"
 import { BiUser } from "react-icons/bi"
 import { GrCart } from "react-icons/gr"
 
@@ -7,6 +8,9 @@ import SearchField from "./Searchfield"
 import "./Header.scss"
 
 export default function() {
+
+    const { cart } = useCart()
+
     return (
         <header>
             <div className="logo-container">
@@ -21,6 +25,9 @@ export default function() {
                 <BiUser size={30} className="user-icon"/>
                 <Link to="/cart">
                     <GrCart  size={27} className="cart-icon"/>
+                    {cart.length ? <span className="cart-count">{
+                        cart.reduce((acc, el)=> acc += el.amount, 0)
+                    }</span> : null}
                 </Link>
             </div>
         </header>

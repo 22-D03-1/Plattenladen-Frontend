@@ -1,12 +1,14 @@
 import "./Counter.scss"
+import { useCart } from "../../context/CartProvider"
 
-export default function({amount}) {
+export default function({amount, id}) {
+    const {increaseAmount, decreaseAmount} = useCart()
     return (
         <>
             <div className="counter">
-                <span>-</span>
+                <span onClick={()=> decreaseAmount(id)}>-</span>
                 <span>{amount}</span>
-                <span>+</span>
+                <span onClick={()=> increaseAmount(id)}>+</span>
             </div>
         </>
     )

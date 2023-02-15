@@ -1,9 +1,12 @@
 import {BiTrash} from "react-icons/bi"
 import Counter from "./Counter"
+import { useCart } from "../../context/CartProvider"
 
 import "./CartItem.scss"
 
 export default function({item, amount}) {
+
+    const {removeItem} = useCart()
 
     return (
         <div>
@@ -13,11 +16,14 @@ export default function({item, amount}) {
                     <h5>{item?.artist}</h5>
                     <p>{item?.title}</p>
                 </div>
+                <div>
+                    <p>{(amount * item.price).toFixed(2)}</p>
+                </div>
             </div>
             <div className="cart-item-row">
                 <p>{item?.price} €</p>
-                <Counter amount={amount}/>
-                <BiTrash size={30}/>
+                <Counter amount={amount} id={item.id}/>
+                <BiTrash onClick={()=> removeItem(item.id)} size={30}/>
             </div>
         </div>
     )
