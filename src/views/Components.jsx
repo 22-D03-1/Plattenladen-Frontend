@@ -30,8 +30,6 @@ export default function ({ records }) {
         console.log({ password });
     };
 
-    console.log({ search1, search2, search3 });
-
     return (
         <>
             <h2>Produkt bearbeiten</h2>
