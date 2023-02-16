@@ -31,26 +31,24 @@ export default function() {
 
     }
 
-    const loginInputs = [
-        (<Input 
-            name="email"
-            label="Email" 
-            type="email" 
-            value={inputValues.email}
-            onChange={handleChangeFormValues}
-        />),
-        (<Input
-            name="password"
-            label="Passwort" 
-            type="password" 
-            value={inputValues.password}
-            onChange={handleChangeFormValues}
-        />)
-    ]
+
 
     return (
-        <>
-            <Form label="Anmelden" children={loginInputs} onSubmit={handleSubmit}/>
-        </>
+        <Form label="Anmelden" onSubmit={handleSubmit}>
+            <Input 
+                name="email"
+                label="Email" 
+                type="email" 
+                value={inputValues.email}
+                onChange={handleChangeFormValues}
+            />
+            <Input
+                name="password"
+                label="Passwort" 
+                type="password" 
+                value={inputValues.password}
+                onChange={handleChangeFormValues}
+            />
+        </Form>
     )
 }

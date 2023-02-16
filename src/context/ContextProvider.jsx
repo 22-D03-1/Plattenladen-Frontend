@@ -2,12 +2,17 @@ import { createContext, useState, useContext } from "react";
 
 export const Context = createContext()
 
-export function useCart() {
+function getContext() {
     const context = useContext(Context)
 
     if(!context) {
         throw new Error("useCart needs to be used within Cart Context")
     }
+    return context
+}
+
+export function useCart() {
+    const context = getContext()
 
     const {cart, setCart} = context
 
@@ -56,11 +61,7 @@ export function useCart() {
 }
 
 export function useRecords() {
-    const context = useContext(Context)
-
-    if(!context) {
-        throw new Error("useRecords needs to be used within Context")
-    }
+    const context = getContext()
 
     const {records, setRecords} = context
 
@@ -75,11 +76,7 @@ export function useRecords() {
 }
 
 export function useUser() {
-    const context = useContext(Context)
-
-    if(!context) {
-        throw new Error("useRecords needs to be used within Context")
-    }
+    const context = getContext()
 
     const {loggedInUser, setLoggedInUser} = context
 
