@@ -19,9 +19,12 @@ const products = [
     }
 ]
 
-export const getProducts = async () => {
+export const getProducts = async (searchTerm = null) => {
     try {
-        const response = await fetch(`${baseUrl}/products`);
+        let urlGetAll = `${baseUrl}/products`
+        if(searchTerm) urlGetAll += `?search=${searchTerm}`
+
+        const response = await fetch(urlGetAll);
         const data = await response.json();
         return data;
     } catch (error) {
