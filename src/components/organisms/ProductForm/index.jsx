@@ -14,7 +14,12 @@ function ProductForm({ product, label = "Produkt hinzufügen", action }) {
     const [formValues, setFormValues] = useState(initialState);
 
     const handleSubmit = async () => {
-        const success = await action({ id: product?.id, ...formValues });
+        const success = await action({ 
+            ...formValues,
+            id: product?.id, 
+            year: parseInt(formValues.year), 
+            price: parseFloat(formValues.price)
+        });
         if (!success) return alert("huch! da ist etwas schiefgegangen...");
 
         setFormValues(initialState);
