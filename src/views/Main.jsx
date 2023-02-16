@@ -1,6 +1,8 @@
 import Product from "../components/Product/Product"
+import { useRecords } from "../context/ContextProvider"
 
-export default function({records}) {
+export default function() {
+    const {records} = useRecords()
     return (
         <>
             <h1>Vinyl für jedes Gefühl</h1>

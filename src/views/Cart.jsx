@@ -1,9 +1,10 @@
-import { useCart } from "../context/CartProvider"
+import { useCart, useRecords } from "../context/ContextProvider"
 import CartItem from "../components/CartItem/CartItem"
 
-export default function({records}) {
+export default function() {
 
     const {cart} = useCart()
+    const {records} = useRecords()
 
     const sumCart = cart.reduce((acc, el)=>{
         const { price } = records.find((r)=> r.id == el.id)

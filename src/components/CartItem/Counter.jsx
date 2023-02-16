@@ -1,5 +1,5 @@
 import "./Counter.scss"
-import { useCart } from "../../context/CartProvider"
+import { useCart } from "../../context/ContextProvider"
 
 export default function({amount, id}) {
     const {increaseAmount, decreaseAmount} = useCart()

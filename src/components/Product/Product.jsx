@@ -1,4 +1,4 @@
-import { useCart } from "../../context/CartProvider"
+import { useCart } from "../../context/ContextProvider"
 import { FiHeart } from "react-icons/fi"
 import Button from "../atoms/Button"
 

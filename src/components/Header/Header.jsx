@@ -1,4 +1,4 @@
-import { useCart } from "../../context/CartProvider"
+import { useCart } from "../../context/ContextProvider"
 import { BiUser } from "react-icons/bi"
 import { GrCart } from "react-icons/gr"
 

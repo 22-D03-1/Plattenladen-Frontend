@@ -1,9 +1,9 @@
 import { createContext, useState, useContext } from "react";
 
-export const CartContext = createContext()
+export const Context = createContext()
 
 export function useCart() {
-    const context = useContext(CartContext)
+    const context = useContext(Context)
 
     if(!context) {
         throw new Error("useCart needs to be used within Cart Context")
@@ -55,17 +55,40 @@ export function useCart() {
     }
 }
 
-export default function CartProvider({children}) {
+export function useRecords() {
+    const context = useContext(Context)
+
+    if(!context) {
+        throw new Error("useRecords needs to be used within Context")
+    }
+
+    const {records, setRecords} = context
+
+    const putRecords = (data) => {
+        setRecords(data)
+    }
+
+    return {
+        records,
+        putRecords
+    }
+}
+
+export default function ContextProvider({children}) {
 
     const [cart, setCart] = useState([])
+    const [records, setRecords] = useState([])
 
     return (
-        <CartContext.Provider
+        <Context.Provider
             value={{
-                cart, setCart
+                cart, 
+                setCart,
+                records,
+                setRecords
             }}
         >
             {children}
-        </CartContext.Provider>
+        </Context.Provider>
     )
 }

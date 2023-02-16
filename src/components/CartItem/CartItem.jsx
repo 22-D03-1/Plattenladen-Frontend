@@ -1,6 +1,6 @@
 import {BiTrash} from "react-icons/bi"
 import Counter from "./Counter"
-import { useCart } from "../../context/CartProvider"
+import { useCart } from "../../context/ContextProvider"
 
 import "./CartItem.scss"
 
