@@ -33,7 +33,6 @@ export const getProducts = async (searchTerm = null) => {
     }
 }
 
-
 export const addProduct = async (product) => {
     console.log(product)
     try {
@@ -53,7 +52,6 @@ export const addProduct = async (product) => {
     }
 }
 
-
 export const updateProduct = async (product) => {
     try {
         const response = await fetch(`${baseUrl}/products/${product.id}`, {
@@ -68,5 +66,25 @@ export const updateProduct = async (product) => {
     } catch (error) {
         console.error(error);
         return false;
+    }
+}
+
+export const login = async (credentials) => {
+    try {
+        const response = await fetch(`${baseUrl}/login`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(credentials)
+        })
+        if (response.status !== 200) throw new Error("Login nicht erfolgreicj")
+
+        const data = await response.json()
+        return data
+    }
+    catch (error) {
+        console.log(error)
+        return false
     }
 }

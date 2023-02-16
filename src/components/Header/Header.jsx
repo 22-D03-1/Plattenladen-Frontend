@@ -22,7 +22,9 @@ export default function() {
                 <SearchField />
             </div>
             <div className="header-function-container">
-                <BiUser size={30} className="user-icon"/>
+                <Link to="/account">
+                    <BiUser size={30} className="user-icon"/>
+                </Link>
                 <Link to="/cart">
                     <GrCart  size={27} className="cart-icon"/>
                     {cart.length ? <span className="cart-count">{

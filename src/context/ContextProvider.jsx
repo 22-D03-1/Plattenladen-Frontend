@@ -74,10 +74,30 @@ export function useRecords() {
     }
 }
 
+export function useUser() {
+    const context = useContext(Context)
+
+    if(!context) {
+        throw new Error("useRecords needs to be used within Context")
+    }
+
+    const {loggedInUser, setLoggedInUser} = context
+
+    const putLoggedInUser = (id) => {
+        setLoggedInUser(id)
+    }
+
+    return {
+        loggedInUser,
+        putLoggedInUser
+    }
+}
+
 export default function ContextProvider({children}) {
 
     const [cart, setCart] = useState([])
     const [records, setRecords] = useState([])
+    const [loggedInUser, setLoggedInUser] = useState("")
 
     return (
         <Context.Provider
@@ -85,7 +105,9 @@ export default function ContextProvider({children}) {
                 cart, 
                 setCart,
                 records,
-                setRecords
+                setRecords,
+                loggedInUser,
+                setLoggedInUser,
             }}
         >
             {children}
