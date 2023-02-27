@@ -1,0 +1,14 @@
+.product-container {
+    width: 100vw;
+    display: grid;
+    padding: 0 1em;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+}
+
+.cart-sum {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+}
